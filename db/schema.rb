@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530030403) do
+ActiveRecord::Schema.define(:version => 20120601021347) do
 
   create_table "meetings", :force => true do |t|
     t.string   "day"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120530030403) do
     t.datetime "updated_at",   :null => false
     t.float    "xcoordinate"
     t.float    "ycoordinate"
+    t.text     "description"
   end
 
 end

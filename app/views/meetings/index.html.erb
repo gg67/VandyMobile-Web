@@ -10,6 +10,7 @@
     <th>Speaker</th>
     <th>Speaker name</th>
     <th>Topic</th>
+    <th>Description</th>    
     <th></th>
     <th></th>
     <th></th>
@@ -25,6 +26,7 @@
     <td><%= meeting.speaker %></td>
     <td><%= meeting.speaker_name %></td>
     <td><%= meeting.topic %></td>
+    <td><%= meeting.description %></td>
     <td><%= link_to 'Show', meeting %></td>
     <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
     <td><%= link_to 'Destroy', meeting, confirm: 'Are you sure?', method: :delete %></td>
