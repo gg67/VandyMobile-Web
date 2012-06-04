@@ -1,7 +1,10 @@
 VandyMobileWeb::Application.routes.draw do
-  resources :meetings, :users
+  resources :meetings, :users, :sessions
 
   get "home/index"
+  
+  match "logout" => "sessions#destroy"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
