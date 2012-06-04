@@ -4,6 +4,7 @@
   <tr>
     <th>Email</th>
     <th>Password</th>  
+    <th>Meetings</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +13,8 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.email %></td>
-    <td><%= user.password %></td>
+    <td><%= user.password_digest %></td>
+    <td><%= user.meetings %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
