@@ -1,5 +1,5 @@
 VandyMobileWeb::Application.routes.draw do
-  resources :meetings
+  resources :meetings, :users
 
   get "home/index"
 
