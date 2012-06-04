@@ -24,12 +24,18 @@ class MeetingsController < ApplicationController
   # GET /meetings/new
   # GET /meetings/new.json
   def new
-    @meeting = Meeting.new
+  
+	if params[:day]
+		@meeting = Meeting.create(:day => "test", :date=>"2012-05-31T13:53:00Z")
+	else
+    	@meeting = Meeting.new
+    end
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @meeting }
     end
+    
   end
 
   # GET /meetings/1/edit
