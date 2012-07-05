@@ -27,20 +27,10 @@ class MeetingsController < ApplicationController
   # GET /meetings/new
   # GET /meetings/new.json
   def new
-<<<<<<< Updated upstream
-    @meeting = Meeting.new
-=======
-  
 	if params[:day]
 		@meeting = Meeting.create(:day => params[:day], :date => params[:date])
 	else
     	@meeting = Meeting.new
-    end
->>>>>>> Stashed changes
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @meeting }
     end
   end
 
