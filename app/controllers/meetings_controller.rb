@@ -2,12 +2,15 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-    @meetings = Meeting.all
+    @meetings = Meeting.order(:date)
+    expires_in 10.second, :public => true
+    if stale?(:etag => @meeting)
+	    respond_to do |format|
+	      format.html # index.html.erb
+	      format.json { render json: @meetings.where("date > ?", Time.now) }
+ 	    end
+	end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @meetings }
-    end
   end
 
   # GET /meetings/1
@@ -24,7 +27,16 @@ class MeetingsController < ApplicationController
   # GET /meetings/new
   # GET /meetings/new.json
   def new
+<<<<<<< Updated upstream
     @meeting = Meeting.new
+=======
+  
+	if params[:day]
+		@meeting = Meeting.create(:day => params[:day], :date => params[:date])
+	else
+    	@meeting = Meeting.new
+    end
+>>>>>>> Stashed changes
 
     respond_to do |format|
       format.html # new.html.erb
