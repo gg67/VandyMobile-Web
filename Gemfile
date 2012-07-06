@@ -40,5 +40,8 @@ gem 'jquery-rails'
 # Nifty-Generators
 gem "nifty-generators", :group => :development
 
-
+#Mocha for Nifty
 gem "mocha", :group => :test
+
+#BCrypt for Nifty
+gem "bcrypt-ruby", :require => "bcrypt"
