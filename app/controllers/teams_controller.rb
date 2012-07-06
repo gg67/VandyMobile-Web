@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = team.all
+    @teams = Team.all
     expires_in 10.second, :public => true
     if stale?(:etag => @team)
 	    respond_to do |format|
@@ -16,7 +16,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @team = team.find(params[:id])
+    @team = Team.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,18 +27,18 @@ class TeamsController < ApplicationController
   # GET /teams/new
   # GET /teams/new.json
   def new
-  	@team = team.new
+  	@team = Team.new
   end
 
   # GET /teams/1/edit
   def edit
-    @team = team.find(params[:id])
+    @team = Team.find(params[:id])
   end
 
   # POST /teams
   # POST /teams.json
   def create
-    @team = team.new(params[:team])
+    @team = Team.new(params[:team])
 
     respond_to do |format|
       if @team.save
@@ -54,7 +54,7 @@ class TeamsController < ApplicationController
   # PUT /teams/1
   # PUT /teams/1.json
   def update
-    @team = team.find(params[:id])
+    @team = Team.find(params[:id])
 
     respond_to do |format|
       if @team.update_attributes(params[:team])
@@ -70,7 +70,7 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
-    @team = team.find(params[:id])
+    @team = Team.find(params[:id])
     @team.destroy
 
     respond_to do |format|
@@ -80,4 +80,4 @@ class TeamsController < ApplicationController
   end
 end
 
-end
+
