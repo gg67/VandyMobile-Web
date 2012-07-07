@@ -2,8 +2,9 @@
 
 <table>
   <tr>
+  	<th>Team</th>
     <th>Name</th>
-    <th>Os</th>
+    <th>OS</th>
     <th>Description</th>
     <th></th>
     <th></th>
@@ -12,6 +13,9 @@
 
 <% @apps.each do |app| %>
   <tr>
+    <% if app.team %>
+    	<td><%= app.team.name %></td>
+    <% end %>
     <td><%= app.name %></td>
     <td><%= app.os %></td>
     <td><%= app.description %></td>

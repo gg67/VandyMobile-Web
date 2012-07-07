@@ -2,7 +2,9 @@
 
 <table>
   <tr>
-    <th>Name</th>  
+    <th>Name</th> 
+    <th>App</th> 
+    <th>Members</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +13,12 @@
 <% @teams.each do |team| %>
   <tr>
     <td><%= team.name %></td>
+    <% if team.app %>
+    	<td><%= team.app.name  %></td>
+    <% end %>
+    <% team.users.each do |user| %>
+    	<td><%= user.email %></td>
+    <% end %>
     <td><%= link_to 'Show', team %></td>
     <td><%= link_to 'Edit', edit_team_path(team) %></td>
     <td><%= link_to 'Destroy', team, confirm: 'Are you sure?', method: :delete %></td>
