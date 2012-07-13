@@ -3,11 +3,13 @@ class AppsController < ApplicationController
   # GET /apps.json
   def index
     @apps = App.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @apps }
-    end
+    expires_in 10.second, :public => true
+    if stale?(:etag => @app)
+	    respond_to do |format|
+	      format.html # index.html.erb
+	      format.json {  render :json => @apps.to_json(:include => { :team => { :only => :name }}) }
+	    end
+	end
   end
 
   # GET /apps/1
@@ -25,7 +27,6 @@ class AppsController < ApplicationController
   # GET /apps/new.json
   def new
     @app = App.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @app }
@@ -41,7 +42,6 @@ class AppsController < ApplicationController
   # POST /apps.json
   def create
     @app = App.new(params[:app])
-
     respond_to do |format|
       if @app.save
         format.html { redirect_to @app, notice: 'App was successfully created.' }
@@ -57,6 +57,7 @@ class AppsController < ApplicationController
   # PUT /apps/1.json
   def update
     @app = App.find(params[:id])
+
 
     respond_to do |format|
       if @app.update_attributes(params[:app])
