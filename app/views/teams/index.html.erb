@@ -16,9 +16,13 @@
     <% if team.app %>
     	<td><%= team.app.name  %></td>
     <% end %>
-    <% team.users.each do |user| %>
-    	<td><%= user.email %></td>
-    <% end %>
+    <% if team.users.exists? %>
+	    <% team.users.each do |user| %>
+	    	<td><%= user.email %></td>
+	    <% end %>
+	<% else %>
+		<td><%= "N/A" %></td>	
+	<% end %>
     <td><%= link_to 'Show', team %></td>
     <td><%= link_to 'Edit', edit_team_path(team) %></td>
     <td><%= link_to 'Destroy', team, confirm: 'Are you sure?', method: :delete %></td>
