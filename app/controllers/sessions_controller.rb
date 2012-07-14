@@ -9,7 +9,15 @@ class SessionsController < ApplicationController
       @user = User.find(user.id)
       respond_to do |format|
 	      format.html # index.html.erb
-	      format.json { render json: @user }
+# 	      format.json {  render :json => @user.to_json(:include => { :teams => { :only => :name }}) }
+# 	      format.json {  render :json => @user.to_json(:include => { :teams => { :include => :app  }}) }
+	      format.json {  render :json => @user.to_json(:include => { :teams => {
+                                 							:include => { :app => {
+	                                 									  :only => :name } },
+	                                 						:only => :name } })}
+
+
+
  	    end
 #       redirect_to_target_or_default root_url, :notice => "Logged in successfully."
     else
