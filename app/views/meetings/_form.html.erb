@@ -47,6 +47,11 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div> 
+  <div class="field">
+    <% @user = User.all %><br />
+    <%= f.label :users %><br />
+    <%= f.select :user_ids, User.all.collect {|x| [x.email, x.id]}, {}, :multiple => true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

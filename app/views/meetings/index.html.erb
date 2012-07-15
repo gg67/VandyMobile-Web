@@ -11,6 +11,7 @@
     <th>Speaker name</th>
     <th>Topic</th>
     <th>Description</th>    
+    <th>Users</th>
     <th></th>
     <th></th>
     <th></th>
@@ -27,6 +28,13 @@
     <td><%= meeting.speaker_name %></td>
     <td><%= meeting.topic %></td>
     <td><%= meeting.description %></td>
+    <% if meeting.users.exists? %>
+    	<% meeting.users.each do |user| %>
+    		<td><%= user.email %></td>
+    	<% end %>
+    <% else %>
+		<td><%= "N/A" %></td>	
+	<% end %>
     <td><%= link_to 'Show', meeting %></td>
     <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
     <td><%= link_to 'Destroy', meeting, confirm: 'Are you sure?', method: :delete %></td>

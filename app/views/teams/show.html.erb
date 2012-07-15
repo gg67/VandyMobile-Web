@@ -8,6 +8,17 @@
   <b>App:</b>
   <%= @team.app %>
 </p>
+<p>
+  <b>Users:</b>
+  <% if @team.users.exists? %>
+  	<% @team.users.each do |user| %>
+    	<td><%= user.email %></td>
+    <% end %>
+    <% else %>
+		<td><%= "N/A" %></td>	
+	<% end %>
+</p>
+
 
 
 

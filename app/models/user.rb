@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # new columns need to be added here to be writable through mass assignment
-  attr_accessible :username, :email, :password, :password_confirmation, :team_ids
+  attr_accessible :username, :email, :password, :password_confirmation, :team_ids, :meeting_ids
 
   attr_accessor :password
   before_save :prepare_password
@@ -14,7 +14,10 @@ class User < ActiveRecord::Base
   validates_length_of :password, :minimum => 4, :allow_blank => true
   
   has_many :team_assignments
+  has_many :meeting_assignments
   has_many :teams, through: :team_assignments
+  has_many :meetings, through: :meeting_assignments
+
 
   # login can be either username or email address
   def self.authenticate(login, pass)

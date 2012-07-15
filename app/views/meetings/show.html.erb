@@ -45,6 +45,16 @@
   <%= @meeting.description %>
 </p>
 
+<p>
+  <b>Users:</b>
+  <% if @meeting.users.exists? %>
+  	<% @meeting.users.each do |user| %>
+    	<td><%= user.email %></td>
+    <% end %>
+    <% else %>
+		<td><%= "N/A" %></td>	
+	<% end %>
+</p>
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %>
