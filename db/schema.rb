@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120715213417) do
+ActiveRecord::Schema.define(:version => 20120721215431) do
 
   create_table "apps", :force => true do |t|
     t.integer  "team_id"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20120715213417) do
     t.string   "team"
     t.text     "tagline"
     t.string   "image_url"
+    t.string   "app_url"
   end
 
   add_index "apps", ["team_id"], :name => "index_apps_on_team_id"

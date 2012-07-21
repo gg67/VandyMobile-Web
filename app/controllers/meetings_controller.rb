@@ -7,7 +7,7 @@ class MeetingsController < ApplicationController
     if stale?(:etag => @meeting)
 	    respond_to do |format|
 	      format.html # index.html.erb
-	      format.json { render json: @meetings.where("date > ?", Time.now) }
+	      format.json { render json: @meetings.where("date > ?", Time.now).to_json(:include => {:users => {:only => :email}})}
  	    end
 	end
 
