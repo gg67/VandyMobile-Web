@@ -10,11 +10,11 @@ class SessionsController < ApplicationController
       respond_to do |format|
 	      format.html # index.html.erb
 # 	      format.json {  render :json => @user.to_json(:include => { :teams => { :only => :name }}) }
-# 	      format.json {  render :json => @user.to_json(:include => { :teams => { :include => :app  }}) }
-	      format.json {  render :json => @user.to_json(:include => { :teams => {
-                                 							:include => { :app => {
-	                                 									  :only => :name } },
-	                                 						:only => :name } })}
+	      format.json {  render :json => @user.to_json(:include => { :teams => { :include => :app  }}) }
+# 	      format.json {  render :json => @user.to_json(:include => { :teams => {
+#                                  							:include => { :app => {
+# 	                                 									  :only => :name, :only => :repo_url } },
+# 	                                 						:only => :name } })}
 
 
 
