@@ -7,7 +7,8 @@ class TeamsController < ApplicationController
     if stale?(:etag => @team)
 	    respond_to do |format|
 	      format.html # index.html.erb
-	      format.json { render json: @teams}
+	      format.json { render :json =>  @teams.to_json(:include => { :users => {:only => :email }}) }
+
  	    end
 	end
 
@@ -20,7 +21,9 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @team }
+#       format.json { render json: @team }
+	  format.json {  render :json => @team.to_json(:include => { :users => { :only => :email  }}) }
+
     end
   end
 
