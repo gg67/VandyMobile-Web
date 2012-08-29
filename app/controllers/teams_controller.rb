@@ -7,7 +7,11 @@ class TeamsController < ApplicationController
     if stale?(:etag => @team)
 	    respond_to do |format|
 	      format.html # index.html.erb
-	      format.json { render :json =>  @teams.to_json(:include => { :users => {:only => :email }}) }
+	      format.json { render :json =>  @teams.to_json(:include => {
+											  :users => {:only => :email },
+											  :app => { :only => [:repo_url, :image_url] }
+											  })}
+											  
 
  	    end
 	end
